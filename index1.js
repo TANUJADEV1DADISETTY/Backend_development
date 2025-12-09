@@ -22,6 +22,14 @@ app.put('/edit-user', (req, res) => {
     res.end("data edited");
 })
 
-app.listen(7007,()=>{
+app.delete('/delete-user', (req, res) => {
+    let data = req.body;
+    console.log(data);
+    //logic to add the data
+    res.end("data deleted");
+})
+
+
+app.listen(5000,()=>{
     console.log("server running at port 7007")
 });
