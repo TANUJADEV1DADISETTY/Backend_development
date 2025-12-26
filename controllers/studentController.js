@@ -37,8 +37,30 @@ const getStudentsDetails = async(req, res) => {
         console.log(error);
         res.status(500).json({error: error.message})
     }
-
 };
+
+const getStudentById = async(req, res) => {
+    try {
+        const id = req.params.id;
+        console.log(id);
+        const data = await student.findById({_id : id});
+        console.log(data);
+        res.status(200).json(data);
+    }catch(error) {
+        res.status(500).json({error : error.message})
+    }
+}
+
+const getStudentByConditions = async(req, res) => {
+    try {
+        const {stdRoll, stdName} = req.query;
+        const data = await student.find({stdRoll, stdName});
+        res.status(200).json(data);
+    }catch(error) {
+        res.status(500).json({error:error.message});
+    }
+}
+
 const addStudents = async(req, res) => {
     try{
          const data = req.body;
@@ -51,4 +73,4 @@ const addStudents = async(req, res) => {
         res.status(500).json({error: error.message})
     }
 };
-export {getStudentsDetails, addStudents};
+export {getStudentsDetails, addStudents, getStudentById, getStudentByConditions};
