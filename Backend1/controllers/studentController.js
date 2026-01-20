@@ -45,6 +45,7 @@ const getStudentById = async(req, res) => {
         console.log(id);
         const data = await student.findById({_id : id});
         console.log(data);
+        
         res.status(200).json(data);
     }catch(error) {
         res.status(500).json({error : error.message})
