@@ -23,25 +23,24 @@ const nodemailer = require('nodemailer')
 const TransportInfo = nodemailer.createTransport({
     service:"gmail",
     auth:{
-        user:"<Your Mail>",
-        pass:"<Your App Password>"
+        user:"dtanuja3011@gmail.com",
+        pass:""
     }
 })
 
 const SendMail = async(req,res) => {
     try{
         const result = await TransportInfo.sendMail({
-            from:"<Your Mail>",
-            to:"<Receiver Mail>",
+            from:"dtanuja3011@gmail.com",
+            to:"dtanuja3011@gmail.com",
             subject:"testing-subject",
-            html:"",
             text:"kf lkasjd flaksjd flaksjfh lkasj fhlaksjd falskj lasdk",
-            attachments:[
-                {
-                    filename:"25M11CS033 1.JPG",
-                    path:"http://localhost:9000/25M11CS033%201.JPG"
-                }
-            ]
+            // attachments:[
+            //     {
+            //         filename:"25M11CS033 1.JPG",
+            //         path:"http://localhost:9000/25M11CS033%201.JPG"
+            //     }
+            // ]
         })
         console.log(result)
         return res.status(200).json(result)
