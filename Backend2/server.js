@@ -34,6 +34,7 @@ const taskRoute = require("./routes/taskRoutes");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const path = require("path");
+const cron = require("node-cron");
 
 const app = express();
 
@@ -46,6 +47,11 @@ app.use(
     credentials: true
   })
 );
+
+
+cron.schedule("* * * * *", () => {
+  console.log("Hello");
+})
 
 app.use("/", taskRoute);
 // app.use(express.static(path.join(__dirname, "uploads")));
