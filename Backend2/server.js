@@ -48,7 +48,7 @@ app.use(
 );
 
 app.use("/", taskRoute);
-app.use(express.static(path.join(__dirname, "uploads")));
+// app.use(express.static(path.join(__dirname, "uploads")));
 
 app.listen(9000, () => {
   console.log("Server running at 9000");

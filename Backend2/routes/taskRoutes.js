@@ -51,12 +51,16 @@
 
 const express = require('express');
 const { GenerateToken, Verify } = require('../controllers/tokenController');
+const bcryptController = require('../controllers/bcryptController');
 
 const route = express.Router();
 route.use(express.json());
 
 route.get("/get-token", GenerateToken);
 route.get("/verify-token", Verify);
+route.post("/encrypt-token", bcryptController.encryptPassword);
+route.post("/decrypt-token", bcryptController.decryptPassword);
+
 
 
 module.exports = route;
